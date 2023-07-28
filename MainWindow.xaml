@@ -11,7 +11,7 @@
         <Label Content="Enter a search term of up to 8 characters" HorizontalAlignment="Left" Margin="22,19,0,0" VerticalAlignment="Top" Width="215" Height="22" RenderTransformOrigin="0.435,0.674" FontSize="10"/>
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="272,46,0,0" VerticalAlignment="Top" Width="70" Click="btnSearch_Click"/>
         <ListBox x:Name="listMovies" d:ItemsSource="{d:SampleData ItemCount=10}" Margin="22,93,177,89"/>
-        <Button x:Name="btnNextPage" Content="Next" HorizontalAlignment="Left" Margin="620,300,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.571,1.285" Width="58" Click="btnNextPage_Click"/>
+        <Button x:Name="btnNextPage" Content="Next" HorizontalAlignment="Left" Margin="284,0,0,50" VerticalAlignment="Bottom" RenderTransformOrigin="0.571,1.285" Width="58" Click="btnNextPage_Click"/>
 
     </Grid>
 </Window>

@@ -23,6 +23,7 @@ namespace MovieSearchApp
     public partial class MainWindow : Window
     {
         private const string apiKey = "64d8d178";
+        private const string baseApiUrl = "https://www.omdbapi.com/";
         public MainWindow()
         {
             InitializeComponent();
@@ -44,8 +45,9 @@ namespace MovieSearchApp
                 MessageBox.Show("Term is too long!");
                 return;
             }
-            string apiUrl = $"https://www.omdbapi.com/?apikey={apiKey}&s={searchText}&page={currentPage}";
+            string apiUrl = $"{baseApiUrl}?apikey={apiKey}&s={searchText}&page={currentPage}";
             await SearchMovies(apiUrl);
+            btnNextPage.IsEnabled = (currentPage * 10) < totalResults;
         }
 
         private async void btnNextPage_Click(object sender, RoutedEventArgs e)
@@ -63,10 +65,12 @@ namespace MovieSearchApp
                 MessageBox.Show("Term is too long!");
                 return;
             }
-            string apiUrl = $"https://www.omdbapi.com/?apikey={apiKey}&s={searchText}&page={currentPage}";
+            string apiUrl = $"{baseApiUrl}?apikey={apiKey}&s={searchText}&page={currentPage}";
             await SearchMovies(apiUrl);
+            btnNextPage.IsEnabled = (currentPage * 10) < totalResults;
 
         }
+        private int totalResults = 0;
 
         private async Task SearchMovies(string apiUrl)
         {
@@ -82,11 +86,12 @@ namespace MovieSearchApp
                         if (jsonBody["Response"].ToString().ToLower() == "true")
                         {
                             JArray movieArray = JArray.Parse(jsonBody["Search"].ToString());
+                            totalResults = int.Parse(jsonBody["totalResults"].ToString());
                             listMovies.Items.Clear();
                             foreach (var item in movieArray)
                             {
                                 listMovies.Items.Add($"Title: {item["Title"]}, Year: {item["Year"]}, imdbID: {item["imdbID"]}, Type: {item["Type"]}");
-                                btnNextPage.IsEnabled = (10 < int.Parse(jsonBody["totalResults"].ToString()));
+                               // btnNextPage.IsEnabled = (10 < int.Parse(jsonBody["totalResults"].ToString()));
                             }
                         }
                         else
