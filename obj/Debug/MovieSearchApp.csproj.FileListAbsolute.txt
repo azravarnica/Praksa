@@ -20,3 +20,5 @@ C:\Users\V&A\source\repos\MovieSearchApp\bin\Debug\Newtonsoft.Json.xml
 C:\Users\V&A\source\repos\MovieSearchApp\bin\Debug\Newtonsoft.Json.Bson.pdb
 C:\Users\V&A\source\repos\MovieSearchApp\bin\Debug\Newtonsoft.Json.Bson.xml
 C:\Users\V&A\source\repos\MovieSearchApp\obj\Debug\MovieSearchApp.csproj.CopyComplete
+C:\Users\V&A\source\repos\MovieSearchApp\obj\Debug\MovieDetailsWindow.g.cs
+C:\Users\V&A\source\repos\MovieSearchApp\obj\Debug\MovieDetailsWindow.baml

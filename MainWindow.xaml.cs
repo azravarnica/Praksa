@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -88,11 +89,19 @@ namespace MovieSearchApp
                             JArray movieArray = JArray.Parse(jsonBody["Search"].ToString());
                             totalResults = int.Parse(jsonBody["totalResults"].ToString());
                             listMovies.Items.Clear();
+                            List<Movie> movies = new List<Movie>();
                             foreach (var item in movieArray)
                             {
-                                listMovies.Items.Add($"Title: {item["Title"]}, Year: {item["Year"]}, imdbID: {item["imdbID"]}, Type: {item["Type"]}");
-                               // btnNextPage.IsEnabled = (10 < int.Parse(jsonBody["totalResults"].ToString()));
+                                Movie movie = new Movie
+                                {
+                                    Title = item["Title"].ToString(),
+                                    Year = item["Year"].ToString(),
+                                    ImdbID = item["imdbID"].ToString(),
+                                    Type = item["Type"].ToString()
+                                };
+                                movies.Add(movie);
                             }
+                            listMovies.ItemsSource = movies;
                         }
                         else
                         {
@@ -110,5 +119,56 @@ namespace MovieSearchApp
                 }
             }
         }
+
+        private async void listMovies_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+            if (listMovies.SelectedItem != null)
+            {
+                Movie selectedMovie = (Movie)listMovies.SelectedItem;
+                string selectedMovieId = selectedMovie.ImdbID;
+                string apiUrl = $"{baseApiUrl}?apikey={apiKey}&i={selectedMovieId}";
+                JObject movieDetails = await GetMovieDetails(apiUrl);
+                MovieDetailsWindow movieDetailsWindow = new MovieDetailsWindow(movieDetails);
+                movieDetailsWindow.ShowDialog();
+            }
+
+        }
+
+        private async Task<JObject> GetMovieDetails(string apiUrl)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonResponse = await response.Content.ReadAsStringAsync();
+                        JObject jsonBody = JObject.Parse(jsonResponse);
+                        return jsonBody;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"HTTP Error: {response.StatusCode}");
+                    }
+                }
+                catch (HttpRequestException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            return null;
+        }
+
+        public class Movie
+        {
+            public string Title { get; set; }
+            public string Year { get; set; }
+            public string ImdbID { get; set; }
+            public string Type { get; set; }
+
+        }
+
     }
 }
