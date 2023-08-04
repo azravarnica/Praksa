@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static MovieSearchApp.MainWindow;
 
 namespace MovieSearchApp
 {
@@ -20,32 +23,53 @@ namespace MovieSearchApp
     /// </summary>
     public partial class MovieDetailsWindow : Window
     {
-        public MovieDetailsWindow()
+        private MovieDetails movieDetails;
+        private const string apiKey = "64d8d178";
+        private const string baseApiUrl = "https://www.omdbapi.com/";
+
+        public MovieDetailsWindow(Movie movie)
         {
             InitializeComponent();
+            GetMovieDetails(movie.ImdbID);
         }
 
-        public MovieDetailsWindow(JObject movieDetails)
+        private async void GetMovieDetails(string imdbId)
         {
-            InitializeComponent();
-            DisplayMovieDetails(movieDetails);
-        }
+            string apiUrl = $"{baseApiUrl}?apikey={apiKey}&i={imdbId}";
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonResponse = await response.Content.ReadAsStringAsync();
+                        movieDetails = JsonConvert.DeserializeObject<MovieDetails>(jsonResponse);
 
-        private void DisplayMovieDetails(JObject movieDetails)
-        {
-            textMovieTitle.Text = movieDetails["Title"].ToString();
-            textYear.Text = movieDetails["Year"].ToString();
-            textRated.Text = movieDetails["Rated"].ToString();
-            textReleased.Text = movieDetails["Released"].ToString();
-            textRuntime.Text = movieDetails["Runtime"].ToString();
-            textGenre.Text = movieDetails["Genre"].ToString();
-            textDirector.Text = movieDetails["Director"].ToString();
-            textWriter.Text = movieDetails["Writer"].ToString();
-            textActors.Text = movieDetails["Actors"].ToString();
-            textPlot.Text = movieDetails["Plot"].ToString();
-            textLanguage.Text = movieDetails["Language"].ToString();
-            imgPoster.Source = new BitmapImage(new Uri(movieDetails["Poster"].ToString()));
+                        textMovieTitle.Text = movieDetails.Title;
+                        textYear.Text = movieDetails.Year;
+                        textRated.Text = movieDetails.Rated;
+                        textReleased.Text = movieDetails.Released;
+                        textRuntime.Text = movieDetails.Runtime;
+                        textGenre.Text = movieDetails.Genre;
+                        textDirector.Text = movieDetails.Director;
+                        textWriter.Text = movieDetails.Writer;
+                        textActors.Text = movieDetails.Actors;
+                        textPlot.Text = movieDetails.Plot;
+                        textLanguage.Text = movieDetails.Language;
+                        imgPoster.Source = new BitmapImage(new Uri(movieDetails.Poster));
 
+                    }
+                    else
+                    {
+                        MessageBox.Show($"HTTP Error: {response.StatusCode}");
+                    }
+                }
+                catch (HttpRequestException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

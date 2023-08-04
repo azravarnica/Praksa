@@ -21,8 +21,8 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            </ListBox>
-            <Button x:Name="btnNextPage" Content="Next" HorizontalAlignment="Left" Margin="284,0,0,50" VerticalAlignment="Bottom" RenderTransformOrigin="0.571,1.285" Width="58" Click="btnNextPage_Click"/>
+        </ListBox>
+        <Button x:Name="btnNextPage" Content="Next" HorizontalAlignment="Left" Margin="284,0,0,50" VerticalAlignment="Bottom" RenderTransformOrigin="0.571,1.285" Width="58" Click="btnNextPage_Click"/>
 
     </Grid>
 </Window>
