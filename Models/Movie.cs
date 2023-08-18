@@ -45,5 +45,9 @@ namespace MovieAPI.Models
         [Required]
         [Column(TypeName = "nvarchar(250)")]
         public string Language { get; set; } = "";
+        [Required]
+        [Column(TypeName = "nvarchar(250)")]
+        public string Country { get; set; } = "";
+        public double Rating { get; set;}
     }
 }

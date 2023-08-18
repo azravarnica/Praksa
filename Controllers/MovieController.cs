@@ -21,15 +21,15 @@ namespace MovieAPI.Controllers
         }
 
         // GET: api/Movie
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
-        {
-          if (_context.Movies == null)
-          {
-              return NotFound();
-          }
-            return await _context.Movies.ToListAsync();
-        }
+         [HttpGet]
+         public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
+         {
+           if (_context.Movies == null)
+           {
+               return NotFound();
+           }
+             return await _context.Movies.ToListAsync();
+         }
 
         // GET: api/Movie/5
         [HttpGet("{id}")]
@@ -51,7 +51,7 @@ namespace MovieAPI.Controllers
 
         //GET: api/Movie/search
         [HttpGet("search")]
-        public async Task<ActionResult<IEnumerable<Movie>>> SearchMovies(string searchTerm)
+        public async Task<ActionResult<IEnumerable<Movie>>> SearchMovies(string searchTerm, int page = 1, int pageSize = 10)
         {
             if (_context.Movies == null)
             {
@@ -59,8 +59,10 @@ namespace MovieAPI.Controllers
             }
 
             var moviesContainingTerm = await _context.Movies
-                .Where(movie => movie.Title.Contains(searchTerm))
-                .ToListAsync();
+                  .Where(movie => movie.Title.Contains(searchTerm))
+                  .Skip((page - 1) * pageSize)
+                  .Take(pageSize)
+                  .ToListAsync();
 
             return moviesContainingTerm;
         }
