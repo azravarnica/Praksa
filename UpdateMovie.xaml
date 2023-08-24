@@ -1,0 +1,56 @@
+﻿<Window x:Class="MovieSearchApp.UpdateMovie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MovieSearchApp"
+        mc:Ignorable="d"
+        Title="UpdateMovie" Height="550" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Width="380" Margin="10">
+                <Label Content="Enter movie details: " FontSize="14" Height="27"/>
+                <Label Content="Title:" Width="50" HorizontalAlignment="Left" Height="25"/>
+                <TextBox x:Name="textTitle" TextWrapping="Wrap"  HorizontalAlignment="Left" Height="25" Width="340"/>
+                <Label Content="Year:" Width="50" HorizontalAlignment="Left"/>
+                <TextBox x:Name="textYear" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Type:" Width="50" HorizontalAlignment="Left"/>
+                <TextBox x:Name="textType" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Rated:" Width="50" HorizontalAlignment="Left" Height="25"/>
+                <TextBox x:Name="textRated" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Released:" Width="65" HorizontalAlignment="Left"/>
+                <TextBox x:Name="textReleased" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Runtime:" Width="60" HorizontalAlignment="Left" Height="25"/>
+                <TextBox x:Name="textRuntime" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Director:" Width="60" HorizontalAlignment="Left" Height="25"/>
+                <TextBox x:Name="textDirector" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Plot:" Width="50" HorizontalAlignment="Left" Height="25"/>
+                <TextBox x:Name="textPlot" TextWrapping="Wrap" Width="340" Height="65" HorizontalAlignment="Left"/>
+
+            </StackPanel>
+
+            <StackPanel Width="380" Margin="10">
+
+                <Label Content="Language:" Width="69" HorizontalAlignment="Left" Margin="0,27,0,0" Height="26"/>
+                <TextBox x:Name="textLanguage" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Writer:" Width="50" HorizontalAlignment="Left" Height="25"/>
+                <TextBox x:Name="textWriter" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Country:" Width="60" HorizontalAlignment="Left"/>
+                <TextBox x:Name="textCountry" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Rating:" Width="50" HorizontalAlignment="Left" Height="26"/>
+                <TextBox x:Name="textRating" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Genre:" Width="50" HorizontalAlignment="Left"/>
+                <TextBox x:Name="textGenre" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Actors:" Width="50" HorizontalAlignment="Left"/>
+                <TextBox x:Name="textActors" TextWrapping="Wrap" Width="340" Height="25" HorizontalAlignment="Left"/>
+                <Label Content="Poster:" Width="50" HorizontalAlignment="Left" Height="25"/>
+                <TextBox x:Name="textPoster" TextWrapping="Wrap" Width="340" Height="50" HorizontalAlignment="Left"/>
+
+                <StackPanel Orientation="Horizontal" Width="340" HorizontalAlignment="Left" Margin="0,20,0,0">
+                    <Button x:Name="btnUpdate" Content="Update" Width="110" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Click="btnUpdate_Click" Margin="0,0,40,0"/>
+                </StackPanel>
+                 </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

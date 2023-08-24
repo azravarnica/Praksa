@@ -1,0 +1,19 @@
+﻿<Window x:Class="MovieSearchApp.LoginUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MovieSearchApp"
+        mc:Ignorable="d"
+        Title="LoginUser" Height="650" Width="800">
+    <Grid>
+        <StackPanel>
+            <Image x:Name="imgLogo" Height="159" Width="220" Margin="0,50,0,0"/>
+            <Label x:Name="lblUsername" Height="30" Width="91" HorizontalAlignment="Center" Content="Username:"  FontSize="16" Margin="0,10,0,0"></Label>
+            <TextBox x:Name="txtUsername" Height="40" Width="360" FontSize="14"/>
+            <Label x:Name="lblPsw" Height="30" Width="91" HorizontalAlignment="Center" Content="Password:" Margin="0,10,0,0" FontSize="16"></Label>
+            <TextBox x:Name="txtPsw" Height="40" Width="360" HorizontalAlignment="Center" FontSize="14"></TextBox>
+            <Button x:Name="btnLogin" Margin="0,15,0,0" Height="40" Width="360" Content="Login" FontSize="14" Click="btnLogin_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

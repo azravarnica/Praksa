@@ -1,0 +1,81 @@
+﻿<Window x:Class="MovieSearchApp.MovieDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MovieSearchApp"
+        mc:Ignorable="d"
+        Title="MovieDetailsWindow" Height="500" Width="700">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Image x:Name="imgPoster" Height="456" Width="260" Margin="0,20,0,3"/>
+            <StackPanel Margin="10">
+                
+                <TextBlock x:Name="textMovieTitle" TextWrapping="Wrap" Foreground="#FF109898" Height="30" HorizontalAlignment="Left" FontWeight="Bold" FontSize="25" Margin="0,20,0,0">
+                <Run Text="{Binding Title}" FontSize="25" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14"> Year:</Run>
+                <Run Text="{Binding Year}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Type:</Run>
+                <Run Text="{Binding Type}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Rated:</Run>
+                <Run Text="{Binding Rated}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Released:</Run>
+                <Run Text="{Binding Released}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Runtime:</Run>
+                <Run Text="{Binding Runtime}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Genre:</Run>
+                <Run Text="{Binding Genre}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Director:</Run>
+                <Run Text="{Binding Director}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Writer:</Run>
+                <Run Text="{Binding Writer}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Actors:</Run>
+                <Run Text="{Binding Actors}" FontSize="14" />
+                </TextBlock>
+
+                <TextBlock>
+                <Run FontSize="14">Language:</Run>
+                <Run Text="{Binding Language}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Country:</Run>
+                <Run Text="{Binding Country}" FontSize="14" />
+                </TextBlock>
+                <TextBlock>
+                <Run FontSize="14">Rating:</Run>
+                <Run Text="{Binding Rating}" FontSize="14" />
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Width="430" Height="130">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="30" FontSize="14">Plot:</TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Plot}" FontSize="14" Width="320" Height="100" />
+                    </StackPanel>
+                </TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnUpdateMovie" Content="Edit" Width="100" Margin="0,0,80,0" HorizontalAlignment="Left" Click="btnUpdateMovie_Click" Height="30" VerticalAlignment="Top"/>
+                    <Button x:Name="btnDelete" Content="Delete" Height="30" Width="100" Margin="80,0,10,0" HorizontalAlignment="Right" Click="btnDelete_Click" VerticalAlignment="Top"  />
+                </StackPanel>
+                </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
