@@ -49,5 +49,6 @@ namespace MovieAPI.Models
         [Column(TypeName = "nvarchar(250)")]
         public string Country { get; set; } = "";
         public double Rating { get; set;}
+        public bool IsDeleted { get; set; }
     }
 }

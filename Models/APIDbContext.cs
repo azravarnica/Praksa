@@ -7,6 +7,7 @@ namespace MovieAPI.Models
         public APIDbContext(DbContextOptions option):base(option) { }
 
         public DbSet<Movie> Movies { get; set; }
+        
     }
 
 }
