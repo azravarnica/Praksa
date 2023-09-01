@@ -10,10 +10,10 @@
         <StackPanel>
             <Image x:Name="imgLogo" Height="159" Width="220" Margin="0,50,0,0"/>
             <Label x:Name="lblUsername" Height="30" Width="91" HorizontalAlignment="Center" Content="Username:"  FontSize="16" Margin="0,10,0,0"></Label>
-            <TextBox x:Name="txtUsername" Height="40" Width="360" FontSize="14"/>
+            <TextBox x:Name="txtUsername" Height="30" Width="360" FontSize="14"/>
             <Label x:Name="lblPsw" Height="30" Width="91" HorizontalAlignment="Center" Content="Password:" Margin="0,10,0,0" FontSize="16"></Label>
-            <TextBox x:Name="txtPsw" Height="40" Width="360" HorizontalAlignment="Center" FontSize="14"></TextBox>
-            <Button x:Name="btnLogin" Margin="0,15,0,0" Height="40" Width="360" Content="Login" FontSize="14" Click="btnLogin_Click"></Button>
+            <PasswordBox x:Name="passBox" Height="30" Width="360" HorizontalAlignment="Center" FontSize="14"></PasswordBox>
+            <Button x:Name="btnLogin" Margin="0,20,0,0" Height="30" Width="360" Content="Login" FontSize="14" Click="btnLogin_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

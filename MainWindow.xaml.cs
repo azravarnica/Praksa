@@ -157,6 +157,16 @@ namespace MovieSearchApp
 
         }
 
+        public class User
+        {
+            public int Id { get; set; }
+            [JsonProperty("username")]
+            public string Name { get; set; }
+            [JsonProperty("password")]
+            public string Password { get; set; }
+
+        }
+
         public class Movie
         {
             [JsonProperty("title")]
